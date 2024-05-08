@@ -1,0 +1,1978 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head><script src="/d-Headiction-our-How-and-ther-Lord-That-manly-sp" async></script>
+
+
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-V9L7');</script>
+<!-- End Google Tag Manager -->
+
+
+<link rel="shortcut icon" href="https://assets.pokemon.com/static2/_ui/img/favicon.ico"/>
+<link rel="stylesheet" href="https://assets.pokemon.com/static2/_ui/css/main.css"/>
+<link href="//fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css" />
+
+<script src="https://assets.pokemon.com/static2/_ui/js/vendor/modernizr.custom.js"></script>
+    <script src="https://www.recaptcha.net/recaptcha/enterprise.js?render=6Lc4P0MoAAAAAAhyCYBhoVfHZUF3HMvFdXSRZ-kO&hl=en"></script>
+
+
+<script>
+    // TODO: this should be moved to a better place in the application
+    // needed for image deferred loading in sliders
+    window.addEventListener('load', function () {
+        window.loaded = true;
+    });
+</script>
+
+
+<script>
+    window.token = "4irb2DZnTqszXC3dKKW48KmSgGELh60QcW3VrBbRAo5bgwFIfDdCFypAvQvwR2SK";
+    window.mockAPI = false;
+    window.loginURL = '/us/pokemon-trainer-club/login';
+    window.pokemonUI = window.pokemonUI || {};
+
+    window.pokemonUI.recaptcha_key = "6Lc4P0MoAAAAAAhyCYBhoVfHZUF3HMvFdXSRZ-kO";
+    window.pokemonUI.email_signup_api = "https://api.emo.pokemon.com/";
+    window.pokemonUI.countryCode = 'us';
+    window.pokemonUI.api = {
+        'user-details': 'https://www.pokemon.com/api/users/details',
+        'base-url-secure': 'https://www.pokemon.com',
+
+        'gsa': '/us/search/api/'
+
+    };
+
+    window.pokemonUI.config = {
+        'collection': 'production_pokemon_collection'
+    };
+
+    window.pokemonUI.modals = window.pokemonUI.modals || {};
+    window.pokemonUI.modals = {
+        "season": "Season",
+        "episode": "Episode",
+        "legal": "Notice: If you click on the YouTube video above, you will leave Pokemon.com. The Pokémon Company International is not responsible for the content of any linked website that is not operated by The Pokémon Company International. Please note that these websites' privacy policies and security practices may differ from The Pokémon Company International's standards.",
+
+        "twitchlegal": "Notice: If you click on the Twitch video above, you will leave Pokemon.com. The Pokémon Company International is not responsible for the content of any linked website that is not operated by The Pokémon Company International. Please note that these websites' privacy policies and security practices may differ from The Pokémon Company International's standards.",
+    };
+    window.pokemonUI.dictionary = window.pokemonUI.dictionary || {};
+    window.pokemonUI.dictionary.dashboard = {
+        "youRecentlyPurchased": "You Recently Redeemed",
+        "shopMore": "Shop More"
+    };
+    window.pokemonUI.global_dictionary = window.pokemonUI.global_dictionary || {};
+    window.pokemonUI.global_dictionary.search = {
+        'searchUrl': '/us/search/',
+        'GSALanguageCode': 'us',
+        'sortBy': 'Sort by:',
+        'filterBy': 'Filter by:',
+        'selectCategory': 'View All',
+        'mostRelevant': 'Most Relevant',
+        'mostRecent': 'Most Recent',
+        'returnedResults': 'Returned XXXX Results',
+        'recommendedResults': 'Recommended Results',
+        'playGame': 'Play Game',
+        'all': {title: 'View All'},
+        'pokedex': {title: 'Pokédex'},
+        'videogames': {title: 'Video Game'},
+        'tcg': {title: 'Trading Card Game'},
+        'funzone': {title: 'Online Game'},
+        'animation': {title: 'Pokémon TV'},
+        'news': {title: 'News'},
+        'events': {title: 'Events'},
+        'strategy': {title: 'Strategy'},
+
+        "numberPrefix": "#"
+    };
+    window.pokemonUI.global_dictionary.datatables = {
+        'search': 'Search:',
+        'previous': 'Previous',
+        'next': 'Next',
+        'emptyTable': "No data is available.",
+        'zeroRecords': "No matching records found."
+    };
+    window.pokemonUI.global_dictionary.errorMessages = {
+        'dataError': 'Currently unavailable. Please try again.'
+    };
+    window.pokemonUI['ui-path'] = 'https://assets.pokemon.com/static2/_ui/'
+
+    window.pokemonUI.global_api = {
+
+        'gsa': '/us/search/api/',
+
+        'status-indicators': {
+            'game-server-status': '/api/tcg/game_server_status',
+            'tcgo-in-maintenance': '/api/tcg/in_maintenance_status',
+            'notifications': 'https://www.pokemon.com/api/user/notifications/config'
+        }
+    };
+
+    window.pokemonUI.cookie = {
+        set: function (name, value, days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            } else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        },
+
+        get: function (name) {
+            var nameEQ = name + '=',
+                ca = document.cookie.split(';'),
+                c, i = 0, ii = 0;
+
+            for (i = 0, ii = ca.length; i < ii; i++) {
+                c = ca[i];
+
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1, c.length);
+                }
+
+                if (c.indexOf(nameEQ) === 0) {
+                    var value = c.substring(nameEQ.length, c.length);
+                    if (value.charAt(0) == '"' && value.charAt(value.length - 1) == '"') {
+                        value = value.substring(1, value.length - 1);
+                    }
+                    return value;
+                }
+            }
+            return null;
+        }
+    };
+
+    window.enableDashboard = true;
+
+</script>
+<link rel="stylesheet" href="https://assets.pokemon.com/static2/_ui/css/gus.css" media="all" type="text/css"/>
+<link rel="stylesheet" href="https://assets.pokemon.com/static2/_ui/css/gus_integration.css"/>
+
+                <link rel="alternate" hreflang="en" href="https://www.pokemon.com/us/strategy/gardevoir-ex-strategy-new-paths-to-victory-for-a-classic-pokemon" />
+                <link rel="alternate" hreflang="en-gb" href="https://www.pokemon.com/uk/strategy/gardevoir-ex-strategy-new-paths-to-victory-for-a-classic-pokemon" />
+
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta http-equiv="Content-Language" content="en"/>
+<meta name="language" content="en"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="twitter:card" content="summary" />
+
+    <meta name="pkm-title" content="Gardevoir&amp;nbsp;ex Strategy: New Paths to Victory for a Classic Pokémon" />
+<meta property="og:title" content="Gardevoir&amp;nbsp;ex Strategy: New Paths to Victory for a Classic Pokémon" />
+<meta name="twitter:title" content="Gardevoir&amp;nbsp;ex Strategy: New Paths to Victory for a Classic Pokémon" />
+
+    <meta name="pkm-image" content="https://www.pokemon.com/static-assets/content-assets/cms2/img/trading-card-game/_tiles/sv/sv05/deck-strategy/gardevoir-ex/sv05-gardevoir-ex-169-en.png"/>
+<meta property="og:image" content="https://www.pokemon.com/static-assets/content-assets/cms2/img/trading-card-game/_tiles/sv/sv05/deck-strategy/gardevoir-ex/sv05-gardevoir-ex-169-en.png" />
+<meta name="twitter:image" content="https://www.pokemon.com/static-assets/content-assets/cms2/img/trading-card-game/_tiles/sv/sv05/deck-strategy/gardevoir-ex/sv05-gardevoir-ex-169-en.png" />
+
+
+
+    <meta name="description" content="The Embrace Pokémon’s supporting cards may have changed post-rotation, but it’s still powerful in the new Standard format." />
+    <meta property="og:description" content="The Embrace Pokémon’s supporting cards may have changed post-rotation, but it’s still powerful in the new Standard format." />
+    <meta name="twitter:description" content="The Embrace Pokémon’s supporting cards may have changed post-rotation, but it’s still powerful in the new Standard format." />
+    <meta name="pkm-description" content="The Embrace Pokémon’s supporting cards may have changed post-rotation, but it’s still powerful in the new Standard format." />
+
+    <meta name="pkm-modified-date" content="20240503" />
+
+<link rel="canonical" href="https://www.pokemon.com/us/strategy/gardevoir-ex-strategy-new-paths-to-victory-for-a-classic-pokemon" />
+
+        <link rel="stylesheet" href="/static-assets/app/static3/css/related-news.css" />
+        <link rel="stylesheet" href="https://assets.pokemon.com/static2/_ui/css/template-d.css" />
+        <link rel="stylesheet" href="/static-assets/app/static3/css/iframe-embed.css" />
+
+    <title>Gardevoir&nbsp;ex Strategy: New Paths to Victory for a Classic Pokémon | Pokemon.com</title>
+    </head>
+
+    <body class="us fluid custom-form-elements">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-V9L7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id='gus-wrapper'>
+    <div class="pokemon-gus-container" data-site="pcom" data-locale="en" data-api="/pcom/api/gus/" data-width="913px"></div>
+</div>
+<div class="main-filler"></div>
+
+
+<nav class="main">
+
+    <div class="blocker"></div>
+
+    <div class="content-wrapper">
+
+        <div class="nav-bar">
+            <a href="#" class="nav-toggle"><span
+                    class="icon icon_hamburger"></span></a>
+
+            <ul class="dashboard-open visible-mobile">
+                <li class="visible-signed-in">
+                    <a href="/us/pokemon-trainer-club/login">
+                        <div class="avatar-icon-wrapper">
+                            <img class="avatar-icon avatar-icon-mobile"
+                                 src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-avatar.png"
+                                 alt="View Profile"/>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="visible-not-signed-in">
+                    <a href="/us/pokemon-trainer-club/login">
+                        <div class="avatar-icon-wrapper">
+                            <img class="avatar-icon avatar-icon-mobile"
+                                src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-signup.png"
+                                alt="Log In / Sign Up"/>
+                        </div>
+                        <div class="sign-in-text-wrapper sign-in-text-wrapper-mobile">
+                            Log In
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <ul data-analytics-label="primary-nav">
+
+
+
+
+<li class="home">
+  <a href="/us/"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_home">
+
+
+
+    </span>
+
+    <span class="title title_home">Home</span>
+  </a>
+
+
+
+</li>
+
+
+
+<li class="explore">
+  <a href="/us/pokedex/"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_pokeball">
+
+
+
+    </span>
+
+    <span class="title title_pokeball">Pokédex</span>
+  </a>
+
+
+
+</li>
+
+
+
+<li class="watch">
+  <a href="/us/pokemon-video-games/"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_joystick">
+
+
+
+    </span>
+
+    <span class="title title_joystick">Video Games & Apps</span>
+  </a>
+
+
+
+</li>
+
+
+
+<li class="play">
+  <a href="/us/pokemon-tcg/"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_cards">
+
+
+
+    </span>
+
+    <span class="title title_cards">Trading Card Game</span>
+  </a>
+
+
+
+</li>
+
+
+
+<li class="attend">
+  <a href="/us/animation"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_pokemontv">
+
+
+
+    </span>
+
+    <span class="title title_pokemontv">Animation</span>
+  </a>
+
+
+
+</li>
+
+
+
+<li class="trade">
+  <a href="/us/play-pokemon/"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_event">
+
+
+
+    </span>
+
+    <span class="title title_event">Play! Pokémon Events</span>
+  </a>
+
+<a href="#" class="subnav-toggle"><span class="icon"></span></a>
+
+<ul class="subnav secondary">
+
+    <li class="subnav-title"
+        data-content-id=""
+        data-content-type="Sidebar"
+        data-content-variation="sidebarLeft"
+        data-content-location=""
+        data-content-category=""
+        data-content-download="">
+        <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+        <a href="#"><span class="title">Play! Pokémon Events</span></a>
+    </li>
+
+
+
+<li>
+    <a href="/us/play-pokemon/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Play! Pokémon Events</a>
+
+    <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+
+<ul class="subnav tertiary">
+
+    <li class="subnav-title"
+        data-content-id=""
+        data-content-type="Sidebar"
+        data-content-variation="sidebarLeft"
+        data-content-location=""
+        data-content-category=""
+        data-content-download="">
+        <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+        <a href="#"><span class="title">Play! Pokémon Events</span></a>
+    </li>
+
+
+
+<li>
+    <a href="/us/play-pokemon/pokemon-events/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Play! Pokémon Events</a>
+
+    <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+
+<ul class="subnav tertiary">
+
+    <li class="subnav-title"
+        data-content-id=""
+        data-content-type="Sidebar"
+        data-content-variation="sidebarLeft"
+        data-content-location=""
+        data-content-category=""
+        data-content-download="">
+        <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+        <a href="#"><span class="title">Play! Pokémon Events</span></a>
+    </li>
+
+
+
+<li>
+    <a href="/us/play-pokemon/pokemon-events/find-an-event/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Event Locator</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/pokemon-events/play-in-a-league/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Pokémon League</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/pokemon-events/pokemon-tournaments/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Pokémon Championship Series</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/pokemon-events/pokemon-tournaments/earn-championship-points/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Championship Points</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/leaderboards/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Championship Rating and Rankings</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/pokemon-events/pre-release-tournaments/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Prerelease Tournaments</a>
+
+
+
+</li>
+
+
+</ul>
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/about/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">About Play! Pokémon</a>
+
+    <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+
+<ul class="subnav tertiary">
+
+    <li class="subnav-title"
+        data-content-id=""
+        data-content-type="Sidebar"
+        data-content-variation="sidebarLeft"
+        data-content-location=""
+        data-content-category=""
+        data-content-download="">
+        <a href="#" class="subnav-toggle"><span class="icon"></span></a>
+        <a href="#"><span class="title">About Play! Pokémon</span></a>
+    </li>
+
+
+
+<li>
+    <a href="/us/play-pokemon/about/play-points/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Play! Points</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/about/tournaments-rules-and-resources/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Rules & Resources</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/about/tournaments-glossary/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Play! Pokémon Glossary</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/about/video-game-glossary/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Video Game Glossary</a>
+
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/about/parents-guide/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Parents Guide</a>
+
+
+
+</li>
+
+
+</ul>
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/organize/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Organize Events</a>
+
+
+
+</li>
+
+
+</ul>
+
+
+</li>
+<li>
+    <a href="/us/play-pokemon/leaderboards/"
+
+
+
+       data-content-id=""
+       data-content-type="Sidebar"
+       data-content-variation="sidebarLeft"
+       data-content-location=""
+       data-content-category=""
+       data-content-download=""
+       target="_self">Play! Pokémon Leaderboards</a>
+
+
+
+</li>
+
+
+</ul>
+
+
+</li>
+
+
+
+<li class="game last-item">
+  <a href="/us/pokemon-news/"
+
+
+
+     target="_self"
+     data-content-id=""
+     data-content-type="Sidebar"
+     data-content-variation="sidebarLeft"
+     data-content-location=""
+     data-content-category=""
+     data-content-download="">
+    <span class="fill"></span>
+
+    <span class="icon icon_news">
+
+
+
+    </span>
+
+    <span class="title title_news">News</span>
+  </a>
+
+
+
+</li>
+
+
+
+    <li class="search">
+        <div class="search-wrapper">
+            <form id="mobile-nav-site-search-widget" action="/search/" method="GET">
+                <input id="mobile-search" type="search" value="" placeholder="Search" name="q"
+                       id="mobile-nav-site-search-widget-term"/>
+                <span class="icon icon_search"></span>
+            </form>
+        </div>
+    </li>
+</ul>
+
+
+
+    </div>
+
+</nav>
+<div id="user-dashboard" class="default-background">
+    <div class="drawer">
+        <nav class="profile-nav hidden-mobile">
+            <ul class="dashboard-open">
+                <li class="visible-not-signed-in sign-up">
+                    <a href="https://club.pokemon.com/us/pokemon-trainer-club/login">
+                        <span class="">
+                            <div class="avatar-icon-wrapper">
+                                <img class="avatar-icon" src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-signup.png"
+                                     alt="Log In"/>
+                            </div>
+                            <div class="sign-in-text-wrapper">
+                                Log In
+                            </div>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="visible-signed-in">
+                    <a href="https://club.pokemon.com/us/pokemon-trainer-club/edit-profile/">
+                        <span class="">
+                            <div class="avatar-icon-wrapper">
+                                <img class="avatar-icon"
+                                     src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-avatar.png"
+                                     alt="Profile"/>
+                            </div>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="visible-signed-in organizer-link">
+                    <a href="/us/pokemon-trainer-club/play-pokemon/events/">
+                            <span class="" >
+                                <div class="organizer-icon-wrapper">
+                                    <img class="organizer-icon default" alt="Profile"
+                                         src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-builder.png" />
+                                    <img class="organizer-icon ie9-hover" alt="Profile"
+                                         src="https://assets.pokemon.com/static2/_ui/img/chrome/profile-navigation/profile-nav-builder-ie9-hover.png" />
+                                    <span class="offscreen">Profile</span>
+                                </div>
+                            </span>
+                    </a>
+                </li>
+
+                <li class="visible-signed-in sign-in" id="sidebar-logout-button">
+                    <a href="/us/pokemon-trainer-club/logout">
+                        <span>Log Out</span>
+                    </a>
+                </li>
+
+            </ul>
+            <div class="search">
+                <a class="icon icon_search" href="">
+                    <span class="offscreen"></span>
+                </a>
+            </div>
+            <div class="bottom-angle"></div>
+        </nav>
+
+        <div class="dashboard"></div>
+
+    </div>
+
+</div>
+
+	    <div class="container">
+
+<section id="template-d-hero">
+    <div class="hero-wrapper">
+        <div >
+                <div class="single-image-wrapper">
+                            <img src="/static-assets/content-assets/cms2/img/trading-card-game/_tiles/sv/sv05/deck-strategy/gardevoir-ex/sv05-gardevoir-ex-169-en.png" alt="Gardevoir ex Strategy: New Paths to Victory for a Classic Pokémon" />
+                </div>
+                <span class="notch-bottom-left hidden-mobile"></span>
+        </div>
+    </div>
+</section>
+
+	        <section class="mosaic section template-d">
+                <div class="column-8 push-1">
+                    <div class="content-block content-block-full" >
+                        <article class="full-article">
+                                <div class="date">
+                                    <p>
+                                        May 03, 2024
+                                    </p>
+                                </div>
+
+                            <h1 class="us-title">Gardevoir&nbsp;ex Strategy: New Paths to Victory for a Classic Pokémon</h1>
+
+                                <h2>Find out how Gardevoir&nbsp;ex has evolved post-rotation alongside a slew of new supporting cards.</h2>
+
+                            <div class="full-article-body" >
+                                        <p style="color: #717171; font-weight: bold; font-size: 110%; line-height: normal; margin: 0 0 2.6em 1em;">By <a href="#stephane-ivanoff">St&eacute;phane Ivanoff</a>, Contributing Writer</p>
+<p><span style="float: left; font-size: 550%; font-weight: bold; line-height: 80%; color: #30a7d7; margin: 0 5px -5px 0;">G</span><a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv01/228/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_228.png" alt="ardevoir ex">ardevoir ex</a> from the Pok&eacute;mon TCG: <a href="https://tcg.pokemon.com/en-us/expansions/scarlet-violet/"><em>Scarlet &amp; Violet</em></a> expansion has redefined what Stage 2 decks are capable of. In the year or so that it&rsquo;s been tournament legal, this card has seen success&mdash;including a Runner-Up finish at the 2023 World Championships. Two powerful Abilities lay at the heart of this success: Gardevoir ex&rsquo;s Psychic Embrace Ability, which allows it to attach Basic Psychic Energy to Psychic Pok&eacute;mon, and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh12/68/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12/SWSH12_EN_68.png" alt="Kirlia">Kirlia</a>&rsquo;s Refinement Ability, which dials up the draw power of Gardevoir ex&rsquo;s pre-Evolution.</p>
+<p>Gardevoir ex is not a new card, but the recent Standard rotation has significantly changed the way the deck can be played. <a href="/us/strategy/gardevoir-ex-pokemon-tcg-deck-strategy">When Robin Schulz wrote about the previous version</a> of the deck, attackers with damage that scaled based on the amount of Energy attached to them provided its might: <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh6/61/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH6/SWSH6_EN_61.png" alt="Gardevoir">Gardevoir</a> and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/cel25/16/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/CEL25/CEL25_EN_16.png" alt="Zacian V">Zacian V</a>. Both Pok&eacute;mon could do enough damage to KO any Pok&eacute;mon in the format&mdash;provided you could attach enough Energy to them (cards like <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/192/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_192.png" alt="Reversal Energy">Reversal Energy</a> and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv4pt5/81/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV4PT5/SV4PT5_EN_81.png" alt="Moonlit Hill">Moonlit Hill</a> could also help with that). But now that they&rsquo;ve both rotated out of Standard, the deck simply can&rsquo;t function in the same way.</p>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv01/228/"><img style="float: right; max-width: 200px; margin: 0 0 16px 16px;" src="/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_228.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;">For a while, it seemed that Gardevoir ex&rsquo;s time was over and that it wouldn&rsquo;t be able to contend with decks like the almighty <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv03/125/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV03/SV03_EN_125.png" alt="Charizard ex">Charizard ex</a>. However, it is too early to give up on the Embrace Pok&eacute;mon. Several players have made the deck work even after rotation: Fabien Pujol came in ninth place at the Europe International Championships with it, and more recently, Joshua Frink made Top 4 at the massive Orlando Regional Championships with a similar deck list. And I&rsquo;m a longtime Gardevoir ex player myself. Now, let&rsquo;s take a look at how to construct and play this new version of this popular deck.</p>
+<br />
+<h1 style="font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;">Rotation Effects on Gardevoir ex</h1>
+<p>First things first, to understand how Gardevoir ex has changed, let&rsquo;s talk about the cards that the deck lost to rotation. I&rsquo;ve already mentioned the two big hitters Gardevoir and Zacian V, but the deck is also missing some important consistency cards: <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh5/129/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH5/SWSH5_EN_129.png" alt="Level Ball">Level Ball</a>, <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh6/140/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH6/SWSH6_EN_140.png" alt="Fog Crystal">Fog Crystal</a>, and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh8/225/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH8/SWSH8_EN_225.png" alt="Battle VIP Pass">Battle VIP Pass</a>, although the latter can be replaced&mdash;arguably advantageously&mdash;by the new <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/144/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_144.png" alt="Buddy-Buddy Poffin">Buddy-Buddy Poffin</a>. Losing these cards, especially Level Ball, makes it harder for Gardevoir to get Kirlia into play. Note that the Kirlia from <em>Sword &amp; Shield&mdash;Chilling Reign</em> (which was usually used as a one-off to get the other Kirlia into play) also rotated, making this task even harder.</p>
+<p>The best way to get multiple Kirlia in play early on now is Technical Machine: <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/178/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_178.png" alt="Evolution">Evolution</a>, which can be used on the first or second turn of the game to evolve two <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh10/60/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH10/SWSH10_EN_60.png" alt="Ralts">Ralts</a> into Kirlia. It is a poor replacement for the previous engine, but when adapting a deck to a new format, it&rsquo;s important to not compare it to its previous version&mdash;it should be compared to the other decks in the new format instead. After all, Gardevoir ex is not the only deck to lose cards to rotation.</p>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv01/89/"><img style="float: right; max-width: 200px; margin: 0 0 16px 16px;" src="/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_89.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;">The question of which attackers to use remains. Of course, Gardevoir ex itself can attack with Miracle Force, but we need a Pok&eacute;mon that can do more damage than that, or we&rsquo;ll stand no chance against decks with high-HP Pok&eacute;mon, such as Charizard ex. The answer? The modest-looking <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv01/89/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_89.png" alt="Drifloon">Drifloon</a>! Don&rsquo;t underestimate it, because its Balloon Blast attack does damage depending on the amount of damage counters on it. Since Psychic Embrace puts damage counters on the Pok&eacute;mon that received the Energy attachment, it&rsquo;s easy to put counters on Drifloon so that it can do high damage. With six, Drifloon hits for 180 damage&hellip;but if you attach a Bravery Charm to Drifloon, you can use Psychic Embrace up to five times on it for a maximum of 10 damage counters or 300 damage. And with a <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/166/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_166.png" alt="Luxurious Cape">Luxurious Cape</a> or the new <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/152/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_152.png" alt="Hero&rsquo;s Cape">Hero&rsquo;s Cape</a>, it can do up to 480&mdash;enough to KO anything in the format!</p>
+<p>And the best part is that since Drifloon has only base 70 HP, we can use Buddy-Buddy Poffin to retrieve it from the deck. Note that the HP-boosting Tool cards can also be used on another attacker, <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/86/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_86.png" alt="Scream Tail">Scream Tail</a>. This Pok&eacute;mon&rsquo;s damage doesn&rsquo;t scale as powerfully as Drifloon&rsquo;s, but it can target the Bench, enabling it to KO powerful support Pok&eacute;mon, such as <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/60/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_60.png" alt="Baxcalibur">Baxcalibur</a> or <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh12/147/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12/SWSH12_EN_147.png" alt="Archeops">Archeops</a>.</p>
+<p>The glue that holds this deck together is <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv01/166/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_166.png" alt="Arven">Arven</a>. This Supporter card saw very little play with Gardevoir ex before rotation, but because this new version relies on Tool cards to get Kirlia into play and to achieve high amounts of damage, Arven is a much better card now. In the first few turns of the game, it can be played for a Buddy-Buddy Poffin and a Technical Machine: Evolution in order to set up a powerful board. Later in the game, it can find Hero&rsquo;s Cape and key Items like <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/188/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_188.png" alt="Super Rod">Super Rod</a> or <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/160/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_160.png" alt="Counter Catcher">Counter Catcher</a>.</p>
+<br />
+<h1 style="font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;">Gardevoir ex Deck List</h1>
+<p>Now that we understand what the deck lost to rotation and how to replace these cards while still achieving the same basic goals, here&rsquo;s a deck list to get you started. It might look familiar: it&rsquo;s a slightly simplified version of the deck that I played at the recent Europe International Championships.</p>
+<br />
+
+
+    <script>
+        window.pokemonUI.dictionary = window.pokemonUI.dictionary || {};
+        window.pokemonUI.dictionary.copyDeck = window.pokemonUI.dictionary.copyDeck || {};
+        window.pokemonUI.dictionary.copyDeck = {
+            'title': "Copy {name}\'s Deck List",
+            'desc': 'You may either copy the deck list to your clipboard or download it as a text file.',
+            'desc_noflash': 'You may either select the deck list and copy it to your clipboard, or download it as a text file.',
+            'clipboard-btn-text': 'Copy to Clipboard',
+            'download-btn-text': 'Download Text File', 
+            'copied-text': 'The deck list has been copied to your clipboard.', 
+            // 'update-browser-text': 'Please update your browser to enable this functionality.', 
+            // 'swf-path': 'https://assets.pokemon.com/static2/_ui/swf/ZeroClipboard.swf', 
+            'download-path': '/us/play-pokemon/decklist/download/0' 
+        };
+    </script>
+
+    <div class="championship-wrapper championship-deck-list-widget ">
+
+        <div class="championship-dropdown">
+            <div class="championship-dropdown-inner">
+                <div class="selected-item">
+                    <span class="text"></span>
+                    <span class="icon icon_arrow_sm_down"></span>
+                </div>
+                <ul>
+
+                    <li data-index-title="Gardevoir ex">
+                        <div class="player-name">Gardevoir ex
+                            </div>
+                        <div class="secondary-info">
+                            <span class="deck-name">
+                                
+                                
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+<div class="deck content-block-full active" id="deck-gardevoir-ex" >
+
+<div class="banner banner-white dog-ear-tl no-border-radius-bottom">
+        <h2 class="banner-h2">Gardevoir ex</h2>
+    <p>
+        
+    </p>
+
+    </div>
+
+    <div class="body">
+
+        <div class=" card-detail">
+            <div class="col">
+                <div class="pokemon-cards card-type">
+                    <div class="title"> Pokémon <span class="total-cards"></span></div>
+                    <ul class="pokemon-cards card-list">
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV4PT5/SV4PT5_EN_29.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv4pt5/29/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Gardevoir ex</div>
+                                            <div class="card-number-in-set">29/91</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?sv4pt5">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/sv4pt5-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">sv4pt5 29</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV4PT5/SV4PT5_EN_29.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12/SWSH12_EN_68.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/ss-series/swsh12/68/">
+                                    <div class="inner">
+                                        <span class="qty">4</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Kirlia</div>
+                                            <div class="card-number-in-set">68/195</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?swsh12">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/swsh12-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">swsh12 68</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12/SWSH12_EN_68.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH10/SWSH10_EN_60.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/ss-series/swsh10/60/">
+                                    <div class="inner">
+                                        <span class="qty">4</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Ralts</div>
+                                            <div class="card-number-in-set">60/189</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?swsh10">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/swsh10-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">swsh10 60</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH10/SWSH10_EN_60.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_89.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv01/89/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Drifloon</div>
+                                            <div class="card-number-in-set">89/198</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?sv01">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/sv01-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">sv01 89</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_89.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_78.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv05/78/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Flutter Mane</div>
+                                            <div class="card-number-in-set">78/162</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?sv05">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/sv05-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">sv05 78</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_78.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_126.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/126/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Jirachi</div>
+                                            <div class="card-number-in-set">126/182</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?sv04">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/sv04-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">sv04 126</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_126.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_41.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/ss-series/swsh9/41/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Manaphy</div>
+                                            <div class="card-number-in-set">41/172</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?swsh9">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/swsh9-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">swsh9 41</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_41.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV4PT5/SV4PT5_EN_37.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv4pt5/37/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Mimikyu</div>
+                                            <div class="card-number-in-set">37/91</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?sv4pt5">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/sv4pt5-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">sv4pt5 37</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV4PT5/SV4PT5_EN_37.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_86.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/86/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Scream Tail</div>
+                                            <div class="card-number-in-set">86/182</div>
+                                                <div class="expansion">
+                                                    <a href="/us/pokemon-tcg/pokemon-cards/?sv04">
+                                                        <i class="icon-bw7-expansion-symbol" style="display:inline-block;background-image: url(https://assets.pokemon.com/assets/cms2/img/trading-card-game/_symbols/expansion_symbol_40x40/sv04-expansion-symbol.png);"></i>
+                                                    </a>
+                                                </div>
+                                            <span style="display:none">sv04 86</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_86.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                    </ul>
+                </div>
+
+                <div class="energy-cards card-type">
+                    <div class="title">Energy Cards <span class="total-cards"></span></div>
+                    <ul class="energy-cards card-list">
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/NRG/NRG_EN_30.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/nrg-series/nrg1/30/">
+                                    <div class="inner">
+                                        <span class="qty">9</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Psychic Energy</div>
+                                            <span style="display:none">nrg1 30</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/NRG/NRG_EN_30.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col">
+
+                <div class="trainer-cards card-type">
+                    <div class="title">Trainer Cards <span class="total-cards"></span></div>
+                    <ul class="trainer-cards  card-list">
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV03/SV03_EN_186.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv03/186/">
+                                    <div class="inner">
+                                        <span class="qty">4</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Arven</div>
+                                            <span style="display:none">sv03 186</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV03/SV03_EN_186.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_185.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv02/185/">
+                                    <div class="inner">
+                                        <span class="qty">4</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Iono</div>
+                                            <span style="display:none">sv02 185</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_185.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_172.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv02/172/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Boss’s Orders (Ghetsis)</div>
+                                            <span style="display:none">sv02 172</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_172.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_171.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/171/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Professor Turo’s Scenario</div>
+                                            <span style="display:none">sv04 171</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_171.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_137.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/ss-series/swsh9/137/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Collapsed Stadium</div>
+                                            <span style="display:none">swsh9 137</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_137.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_144.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv05/144/">
+                                    <div class="inner">
+                                        <span class="qty">4</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Buddy-Buddy Poffin</div>
+                                            <span style="display:none">sv05 144</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_144.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_160.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/160/">
+                                    <div class="inner">
+                                        <span class="qty">3</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Counter Catcher</div>
+                                            <span style="display:none">sv04 160</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_160.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_196.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv01/196/">
+                                    <div class="inner">
+                                        <span class="qty">3</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Ultra Ball</div>
+                                            <span style="display:none">sv01 196</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_196.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_163.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/163/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Earthen Vessel</div>
+                                            <span style="display:none">sv04 163</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_163.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_181.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv01/181/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Nest Ball</div>
+                                            <span style="display:none">sv01 181</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_181.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_188.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv02/188/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Super Rod</div>
+                                            <span style="display:none">sv02 188</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_188.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_178.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/178/">
+                                    <div class="inner">
+                                        <span class="qty">2</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Technical Machine: Evolution</div>
+                                            <span style="display:none">sv04 178</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_178.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_173.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv02/173/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Bravery Charm</div>
+                                            <span style="display:none">sv02 173</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_173.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_152.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv05/152/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Hero’s Cape</div>
+                                            <span style="display:none">sv05 152</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_152.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH10/SWSH10_EN_146.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/ss-series/swsh10/146/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Hisuian Heavy Ball</div>
+                                            <span style="display:none">swsh10 146</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH10/SWSH10_EN_146.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-image="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_166.png" data-link="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/sv-series/sv04/166/">
+                                    <div class="inner">
+                                        <span class="qty">1</span>
+                                        <div class="title-and-info">
+                                            <div class="card-title">Luxurious Cape</div>
+                                            <span style="display:none">sv04 166</span>
+                                            <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_166.png" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class=" card-detail">
+
+                    <div class="card-image" >
+                        <div class="icon-container"></div>
+                        <img class="card-image" />
+                        <a href="#" class="more-info">More Info</a>
+
+                        <a class="copy-deck"
+                           data-slug="gardevoir-ex"
+                           data-player="Gardevoir ex">Copy Deck List</a>
+                        <textarea id="deck-txt-gardevoir-ex">****** Pokémon Trading Card Game Deck List ******
+
+Pokémon - 18
+
+2 Gardevoir ex PAF 29
+4 Kirlia SIT 68
+4 Ralts ASR 60
+2 Drifloon SVI 89
+2 Flutter Mane TEF 78
+1 Jirachi PAR 126
+1 Manaphy BRS 41
+1 Mimikyu PAF 37
+1 Scream Tail PAR 86
+
+Trainer Cards - 33
+
+4 Arven OBF 186
+4 Iono PAL 185
+1 Boss’s Orders (Ghetsis) PAL 172
+1 Professor Turo’s Scenario PAR 171
+1 Collapsed Stadium BRS 137
+4 Buddy-Buddy Poffin TEF 144
+3 Counter Catcher PAR 160
+3 Ultra Ball SVI 196
+2 Earthen Vessel PAR 163
+2 Nest Ball SVI 181
+2 Super Rod PAL 188
+2 Technical Machine: Evolution PAR 178
+1 Bravery Charm PAL 173
+1 Hero’s Cape TEF 152
+1 Hisuian Heavy Ball ASR 146
+1 Luxurious Cape PAR 166
+
+Energy - 9
+
+9 Psychic Energy NRG 30
+
+Total Cards - 60
+
+****** Deck list generated on Pokemon.com ******
+
+</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <div class="popup copy-deck-modal"></div>
+
+    <style>
+        .championship-deck-list-widget .deck img.card-image {
+            width:100%;
+        }
+
+            .championship-deck-list-widget .championship-dropdown, .championship-deck-list-widget .championship-dropdown * { display: none }
+
+        .copy-deck-modal .right a { visibility: hidden }
+    </style>
+
+                                        <br />
+<h1 style="font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;">Gardevoir ex Main Strategy</h1>
+<p>The core of the deck is the Gardevoir ex Evolution chain: we play a full four copies of Kirlia because we want as many as possible in play at any given time. But as only one needs to evolve into Gardevoir ex, two copies of it are enough. Drifloon and Scream Tail are the deck&rsquo;s main attackers, and the majority of the Trainers (minus the Tool cards I already discussed) are consistency cards, such as <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/185/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_185.png" alt="Iono">Iono</a> and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv01/196/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_196.png" alt="Ultra Ball">Ultra Ball</a>, or important staples like Super Rod that can recover attackers and pieces of the Gardevoir ex chain later in the game.</p>
+<p>There are more added cards. First, I&rsquo;ve included two copies of <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/78/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_78.png" alt="Flutter Mane">Flutter Mane</a>. This Pok&eacute;mon is not used all the time, but it&rsquo;s one of the best starters in the deck due to the way it can disrupt many Pok&eacute;mon, such as <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/61/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_61.png" alt="Chien-Pao ex">Chien-Pao ex</a> or <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh9/123/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_123.png" alt="Arceus VSTAR">Arceus VSTAR</a>. More importantly, it&rsquo;s used against any deck using the Lost Zone engine. Lost Zone box and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/131/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_131.png" alt="Giratina VSTAR">Giratina VSTAR</a> are still popular strategies, using <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/79/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_79.png" alt="Comfey">Comfey</a> to draw cards and grow their Lost Zone and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/50/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_50.png" alt="Cramorant">Cramorant</a> as an early-game attacker. Flutter Mane shuts off the Abilities of both Pok&eacute;mon, slowing them down considerably, and its Hex Hurl attack is fairly efficient against the low-HP Pok&eacute;mon of a Lost Zone deck. This gives the Gardevoir ex deck time to complete its setup.</p>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv02/97/"><img style="float: right; max-width: 200px; margin: 0 0 16px 16px;" src="/static-assets/content-assets/cms2/img/cards/web/SV02/SV02_EN_97.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;">Second, the deck also uses <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/97/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_97.png" alt="Mimikyu">Mimikyu</a> as an attacker. This Pok&eacute;mon is used mainly against Charizard ex decks, which don&rsquo;t deal with it very easily. Mimikyu doesn&rsquo;t hit very hard, but its Ghost Eye attack can Knock Out many Basic Pok&eacute;mon like <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv03/26/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV03/SV03_EN_26.png" alt="Charmander">Charmander</a>, <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv3pt5/16/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV3PT5/SV3PT5_EN_16.png" alt="Pidgey">Pidgey</a>, and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh12pt5/111/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH12PT5/SWSH12PT5_EN_111.png" alt="Bidoof">Bidoof</a>, as long as you can bring them to the Active Spot with Counter Catcher or <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/172/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_172.png" alt="Boss&rsquo;s Orders">Boss&rsquo;s Orders</a>. Mimikyu&rsquo;s attack is not very costly&mdash;we can power it up without putting Gardevoir ex in play, which could easily get KO&rsquo;d. This way, we can delay evolving into Gardevoir ex until we can KO the opponent&rsquo;s <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv03/164/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV03/SV03_EN_164.png" alt="Pidgeot ex">Pidgeot ex</a> and play Iono at the same time, disrupting their hand and board. <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh9/41/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_41.png" alt="Manaphy">Manaphy</a> and <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/126/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_126.png" alt="Jirachi">Jirachi</a> are good support Pok&eacute;mon that can protect our low-HP Pok&eacute;mon. Manaphy guards our Bench against <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh10/46/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH10/SWSH10_EN_46.png" alt="Radiant Greninja">Radiant Greninja</a>&rsquo;s attacks, and Jirachi can be used against decks that use <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/70/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_70.png" alt="Sableye">Sableye</a>.</p>
+<p><a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/171/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_171.png" alt="Professor Turo&rsquo;s Scenario">Professor Turo&rsquo;s Scenario</a> serves a few purposes in this deck. It can be used to remove Gardevoir ex from play if it could become a liability. It can also be played to heal a damaged Pok&eacute;mon. Or it can prevent a support Pok&eacute;mon from getting trapped by <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/pgo/55/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/PGO/PGO_EN_55.png" alt="Snorlax">Snorlax</a>&rsquo;s Block or <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/71/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_71.png" alt="Mawile">Mawile</a>&rsquo;s Tempting Trap. It can even be played on a Pok&eacute;mon with Energy attached simply to discard its Energy, so that they can be attached on a new attacker. All in all, it&rsquo;s a very versatile card that shines in this deck. <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh9/137/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH9/SWSH9_EN_137.png" alt="Collapsed Stadium">Collapsed Stadium</a> plays a similar purpose: it&rsquo;s also a Stadium card that can be used to counter opposing Stadiums like <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/161/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_161.png" alt="Lost City">Lost City</a>. Being able to limit the opponent&rsquo;s board can also be strong against some opponents.</p>
+<p>Finally, you&rsquo;ll notice that the deck only plays nine Energy cards, far fewer than the usual 12 from the pre-rotation version of Gardevoir ex. This is because we don&rsquo;t need as many Energy to take big Knock Outs. Previously, you&rsquo;d need 9 Energy on a Zacian V to do 330 damage, but you only need 6 on a Drifloon (with a Tool) to reach the same threshold. However, we also play a couple of <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/163/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_163.png" alt="Earthen Vessel">Earthen Vessel</a>, as we still need to find and discard these Energy fast enough to answer the opponent&rsquo;s attacks.</p>
+<br />
+<h1 style="font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;">Gardevoir ex Playing Tips</h1>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv01/191/"><img style="float: right; max-width: 200px; margin: 0 0 16px 16px;" src="/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_191.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;">If you want to play this deck well, you&rsquo;ll have to figure out a plan in every matchup. Against decks like Arceus VSTAR, your goal is fairly straightforward: simply attack over and over with Drifloon, trading your one-Prize attacker for your opponent&rsquo;s two-Prize Pok&eacute;mon. Against other decks, you&rsquo;ll want to target support Pok&eacute;mon. For example, Chien-Pao ex / Baxcalibur is a powerful deck that can take multiple Prizes in one turn with Iron Hands ex or Radiant Greninja. Gardevoir ex usually can&rsquo;t win the straightforward Prize race; instead, you should KO your opponent&rsquo;s Baxcalibur&mdash;without it, they can&rsquo;t attach multiple Energy cards per turn. Even if the opponent can simply evolve another <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/57/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_57.png" alt="Frigibax">Frigibax</a> into Baxcalibur, they&rsquo;ll eventually be limited by the amount of <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv01/191/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_191.png" alt="Rare Candy">Rare Candy</a> they play.</p>
+<p>It would be difficult to fully describe how to play every matchup. As a general rule, though, if you can simply win the Prize race by attacking with Drifloon, go for it. If you can&rsquo;t, try to disrupt your opponent in one way or another, usually by taking Knock Outs on the support Pok&eacute;mon they use to draw or accelerate Energy. Iono can also be a powerful disruptive card. Some decks can also be very weak to Mimikyu: if they only play one or two Pok&eacute;mon that Mimikyu isn&rsquo;t immune to, you can try to KO these Pok&eacute;mon while keeping Mimikyu in the Active Spot to win the game. Be careful, though: the opponent may be able to use Boss&rsquo;s Orders to Knock Out other Pok&eacute;mon and win, even if they can&rsquo;t touch Mimikyu itself.</p>
+<br />
+<h1 style="font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;">Further Directions with Gardevoir ex</h1>
+<p>If you want to take the deck to its absolute limits, you&rsquo;ll probably want to add more disruptive cards. Gardevoir ex doesn&rsquo;t have the speed or the sheer power of other top-tier decks, but it does have flexibility and a solid draw engine. When it can&rsquo;t win through brute force, it can use other ways of winning. Here are some cards that you can try:</p>
+<div style="clear: both; line-height: 0; padding-bottom: 1rem;"><br /></div>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv01/96/"><img style="float: left; max-width: 200px; margin: 0 16px 16px 0;" src="/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_96.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;"><a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv01/96/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV01/SV01_EN_96.png" alt="Klefki">Klefki</a>: An alternative to the second Flutter Mane, Klefki isn&rsquo;t an attacker, but it can be searched with Buddy-Buddy Poffin, and it&rsquo;s even more disruptive as it prevents several popular Abilities&mdash;including Radiant Greninja&rsquo;s Concealed Cards. My favorite use of Klefki is against fast Future decks, which use <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/81/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_81.png" alt="Iron Crown ex">Iron Crown ex</a> to boost <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/121/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_121.png" alt="Miraidon">Miraidon</a>&rsquo;s damage. Klefki shuts down Iron Crown ex&rsquo;s Cobalt Command, so it is guaranteed to withstand one attack from Miraidon, buying time for the deck to set up.</p>
+<div style="clear: both; line-height: 0; padding-bottom: 1rem;"><br /></div>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv05/146/"><img style="float: left; max-width: 200px; margin: 0 16px 16px 0;" src="/static-assets/content-assets/cms2/img/cards/web/SV05/SV05_EN_146.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;"><a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/146/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_146.png" alt="Eri">Eri</a>: A Supporter that simply discards cards from the opponent&rsquo;s hand might not seem like it synergizes very well with the deck, but Eri&rsquo;s power in the current metagame is not to be underestimated. Many decks rely on Item cards: Stage 2 decks like Charizard ex want their Rare Candy, Lost Zone decks need their <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/163/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_163.png" alt="Mirage Gate">Mirage Gate</a>, and Chien-Pao ex / Baxcalibur needs <em>a lot</em> of things (Rare Candy, Super Rod, <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv02/189/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV02/SV02_EN_189.png" alt="Superior Energy Retrieval">Superior Energy Retrieval</a>, <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/157/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_157.png" alt="Prime Catcher">Prime Catcher</a>...). Also, one of the Gardevoir ex deck&rsquo;s weaknesses is when opponents use <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/swsh11/162/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH11/SWSH11_EN_162.png" alt="Lost Vacuum">Lost Vacuum</a> to discard an HP-boosting Tool card from Drifloon, taking a Knock Out without even attacking. Eri can discard Lost Vacuum from the opponent&rsquo;s hand before they get a chance to use it, which makes it a strong defensive card in this deck.</p>
+<div style="clear: both; line-height: 0; padding-bottom: 1rem;"><br /></div>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv04/177/"><img style="float: left; max-width: 200px; margin: 0 16px 16px 0;" src="/static-assets/content-assets/cms2/img/cards/web/SV04/SV04_EN_177.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;">Technical Machine: <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv04/177/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV04/SV04_EN_177.png" alt="Devolution">Devolution</a>: A smart opponent might expect Eri and evolve multiple Pok&eacute;mon into Stage 2 before you can discard Rare Candy from their hand. This is where TM: Devolution comes into play! If you can devolve multiple Stage 2 Pok&eacute;mon, you&rsquo;ve effectively wasted several of their cards. This strategy can be strong against Charizard ex, which usually wants at least a Charizard ex and a Pidgeot ex in play and will play multiple Rare Candy early on to achieve this.</p>
+<div style="clear: both; line-height: 0; padding-bottom: 1rem;"><br /></div>
+<a href="/us/pokemon-tcg/pokemon-cards/series/sv03/192/"><img style="float: left; max-width: 200px; margin: 0 16px 16px 0;" src="/static-assets/content-assets/cms2/img/cards/web/SV03/SV03_EN_192.png" alt="" /></a>
+<div style="overflow: hidden; min-width: 50%; line-height: 0;"><br /></div>
+<p style="margin-top: 0;"><a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv03/192/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV03/SV03_EN_192.png" alt="Pok&eacute;mon League Headquarters">Pok&eacute;mon League Headquarters</a>: Some Basic Pok&eacute;mon, like Iron Hands ex or the new Roaring Moon, can give Gardevoir ex trouble. Iron Hands ex can Knock Out Pok&eacute;mon for an additional Prize card, for starters. And <a rel="imagepopup" href="https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv05/109/" target="_self" src="https://assets.pokemon.com/assets/cms2/img/cards/web/SV05/SV05_EN_109.png" alt="Roaring Moon">Roaring Moon</a> hits hard&mdash;it can even KO Gardevoir ex because of Weakness and has 200 HP with an Ancient Booster Energy Capsule attached, making it difficult to KO without investing cards. Pok&eacute;mon League Headquarters is a Stadium that increases these Pok&eacute;mon&rsquo;s attack costs, which can slow them down or even prevent them from attacking when combined with other disruptive cards like Iono.</p>
+<div style="clear: both; line-height: 0; padding-bottom: 1rem;"><br /></div>
+<p>Of course, these are only some of the possibilities that Gardevoir ex offers. The card&rsquo;s potential is limitless, so don&rsquo;t be afraid to experiment! I believe that we&rsquo;ll see Gardevoir ex embrace victory in competitions big and small for a long time to come.</p>
+<p>For more Pok&eacute;mon TCG strategy and analysis, visit <a href="/us/strategy">Pokemon.com/Strategy</a>.</p>
+<br />
+
+<div class="content-block content-block-full" >
+    <article class="full-article">
+        <div class="full-article-body">
+            <div style="text-align: center;">
+<div style="display: inline-block; width: 578px; max-width: 100%; background-color: #f2f2f2; border-radius: 5px;">
+<div style="margin: 0.5rem;">
+<div style="display: inline-block; margin: 0.5rem;">
+<p style="color: #212121; font-size: 125%; font-weight: bold; line-height: 1; margin: 0;"><a id="stephane-ivanoff" class="anchor" name="stephane-ivanoff"></a>St&eacute;phane Ivanoff</p>
+<div style="line-height: 0; padding: 0.5rem 0 0;">
+<div style="display: inline-block; line-height: 0; width: 75px; border-bottom: 1px solid #a6a6a6;"><br /></div>
+</div>
+</div>
+<div style="clear: both; line-height: 0;"><br /></div>
+<div style="display: inline-block; width: 150px; margin: 0.5rem; vertical-align: top;"><img style="max-width: 100%; margin: 0; border-radius: 5px;" src="/static-assets/content-assets/cms2/img/attend-events/headshots/150x150/stephane_ivanoff.jpeg" alt="" /></div>
+<div style="display: inline-block; min-width: 200px; max-width: 375px; margin: 0.5rem; vertical-align: top; text-align: left;">
+<p style="color: #212121; font-size: 90%; margin: 0;">St&eacute;phane Ivanoff is a contributing writer for Pokemon.com. A longtime Pok&eacute;mon fan, he has played the Pok&eacute;mon TCG competitively since 2010 and is a former National Champion, seven-time Worlds competitor, and the 2018 and 2019 North America International Champion in the Masters Division. He studied mathematics and has a degree in Probability and Statistics, but he says that doesn't help his game as much as you'd think! You can follow him on Twitter @lubyllule.</p>
+</div>
+</div>
+</div>
+</div>
+        </div>
+    </article>
+</div>                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="hidden-mobile">
+                    <div class="column-4 push-9" >
+                        <div class="content-block content-block-full more-cards-block">
+                            <a class="button button-lightblue" href="/us/pokemon-news">Back to News</a>
+                        </div>
+
+
+<div id="game-promo" class="content content-block content-block-full" >
+        <div id="game-promo-top">
+            <img src="/static-assets/content-assets/cms2/img/trading-card-game/series/sv_series/sv05/sv05_logo_169_en.png" alt="Scarlet & Violet—Temporal Forces">
+        </div>
+
+
+    <div class="banner banner-gray">
+        <table>
+            <tbody>
+            <tr>
+                <td>Series</td>
+                <td>
+                        Scarlet & Violet Series
+                </td>
+            </tr>
+            <tr>
+                <td>Release Date</td>
+                <td>
+                        March 22, 2024
+                </td>
+            </tr>
+                <tr>
+                    <td>Number of Cards</td>
+                    <td>Over 160</td>
+                </tr>
+            <tr>
+                <td>Standard Legal Deck?</td>
+                <td>
+                        Yes
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <span class="notch-bottom-center">
+                            ::before
+                            ::after
+                        </span>
+</div>
+
+<div class="quicklink content-block-quicklink content-block-full" >
+    <div class="color-block-quicklink color-block-lightblue">
+        <h2>Trading Card Game Links</h2>
+    </div>
+
+    <div class="banner-quicklink banner-lightgray">
+        <ul>
+                    <li><a href="https://tcg.pokemon.com/tcgl" target="_self">Pokémon TCG Live</a></li>
+                    <li><a href="/us/pokemon-news?articleTopic=trading-card-game" target="_self">News</a></li>
+                    <li><a href="/us/strategy" target="_self">Strategy</a></li>
+                    <li><a href="/us/pokemon-tcg/pokemon-cards/" target="_self">Card Database</a></li>
+        </ul>
+    </div>
+</div>                    </div>
+                </div>
+        
+                <div class="loader"></div>
+            </section>
+            <div class="visible-mobile">
+                <div class="column-4 push-9">
+                    <div class="content-block content-block-full more-cards-block">
+                        <a class="button button-lightblue" href="/us/pokemon-news">Back to News</a>
+                    </div>
+
+
+<div id="game-promo" class="content content-block content-block-full" >
+        <div id="game-promo-top">
+            <img src="/static-assets/content-assets/cms2/img/trading-card-game/series/sv_series/sv05/sv05_logo_169_en.png" alt="Scarlet & Violet—Temporal Forces">
+        </div>
+
+
+    <div class="banner banner-gray">
+        <table>
+            <tbody>
+            <tr>
+                <td>Series</td>
+                <td>
+                        Scarlet & Violet Series
+                </td>
+            </tr>
+            <tr>
+                <td>Release Date</td>
+                <td>
+                        March 22, 2024
+                </td>
+            </tr>
+                <tr>
+                    <td>Number of Cards</td>
+                    <td>Over 160</td>
+                </tr>
+            <tr>
+                <td>Standard Legal Deck?</td>
+                <td>
+                        Yes
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <span class="notch-bottom-center">
+                            ::before
+                            ::after
+                        </span>
+</div>
+
+<div class="quicklink content-block-quicklink content-block-full" >
+    <div class="color-block-quicklink color-block-lightblue">
+        <h2>Trading Card Game Links</h2>
+    </div>
+
+    <div class="banner-quicklink banner-lightgray">
+        <ul>
+                    <li><a href="https://tcg.pokemon.com/tcgl" target="_self">Pokémon TCG Live</a></li>
+                    <li><a href="/us/pokemon-news?articleTopic=trading-card-game" target="_self">News</a></li>
+                    <li><a href="/us/strategy" target="_self">Strategy</a></li>
+                    <li><a href="/us/pokemon-tcg/pokemon-cards/" target="_self">Card Database</a></li>
+        </ul>
+    </div>
+</div>            </div>
+        </div>
+
+
+
+                <section class="section template-d no-padding">
+                    <div class="column-8 push-1">
+                        <div>
+                            <ul class="article-tags">
+                                    <li class="category-tags category-tags-lightblue" style="margin-right: 20px;">
+                                        <a href="/us/pokemon-news?articleTopic=trading-card-game"> Trading Card Game </a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+    </div>
+
+
+  <div id="back-to-top" class="visible-mobile">
+    <span class="offscreen">Back to Top</span>
+  </div>
+
+  <div class="footer-divider">
+    <span class="footer-notch"></span>
+  </div>
+
+  <footer class="global-footer">
+
+<div class="global-footer-email">
+    <p class="footer-email-title">Sign up for Pok&eacute;mon&nbsp;emails!</p>
+    <div class="footer-email-container disable-custom-select-menu">
+        <div class="footer-email-form">
+            <input type="email" name="email-signup-email-text" id="email-signup-email-text" placeholder="Email" class="footer-white-box" required />
+            <div class="region_dob_wrap">
+                <select id="email-signup-regions" class="footer-white-box footer-region-select" required>
+                </select>
+                <input type="text" class="footer-email-input footer-white-box" title="Birthday" id="email-signup-dob" placeholder="Birthday" />
+            </div>
+        </div>
+        <div class="footer-email-notification-options">
+            <p class="email_msg">I’d like to receive emails&nbsp;about:</p>
+            <div class="footer-email-checkbox-wrapper-1">
+                <input type="checkbox" id="email-signup-vg-apps" name="email-signup-vg-apps" value="pokemon_news" class="footer-email-checkbox">
+                <label for="email-signup-vg-apps"> Pokémon video games, apps, and&nbsp;more</label>
+            </div>
+            <div class="footer-email-checkbox-wrapper-1" id="email-signup-pc-container">
+                <input type="checkbox" id="email-signup-pc" name="email-signup-pc" value="pcenter" class="footer-email-checkbox">
+                <label for="email-signup-pc"> Pokémon Center (our official&nbsp;online shop)</label>
+            </div>
+            <div class="footer-email-checkbox-wrapper-1">
+                <input type="checkbox" id="email-signup-terms" name="email-signup-terms" value="terms" class="footer-email-checkbox">
+                <label for="email-signup-terms">
+                    I accept the Pokemon.com <a class="footer-email-link" href="https://www.pokemon.com/us/terms-of-use">Terms&nbsp;of&nbsp;Use</a> and <a class="footer-email-link" href="https://www.pokemon.com/us/privacy-notice">Privacy&nbsp;Policy</a>
+                </label>
+            </div>
+        </div>
+    </div>
+    <input type="submit" name="submit_button" value="SIGN UP" class="footer-email-sumbit" id="email-signup-submit-button"/>
+</div>    <div class="content-wrapper match-height-tablet">
+
+
+<div class="global-footer-links match">
+  <h2><span class="offscreen">The Pok&eacute;mon Company</span></h2>
+  <ul>
+        <li>
+          <a href="/us/pokemon-news/" rel="" title="">
+            News
+          </a>
+        </li>
+
+      <li>
+        <a href="/us/parents-guide/" rel="" title="">
+         Parents Guide
+        </a>
+      </li>
+
+      <li>
+        <a href="/us/customer-service/" rel="" title="">
+          Customer Service
+        </a>
+      </li>
+
+      <li>
+        <a href="https://corporate.pokemon.com/en-us/" rel="" title="" id="about-our-company-link">
+          About Our Company
+        </a>
+      </li>
+
+        <li>
+          <a id="careers-link" href="https://boards.greenhouse.io/pokemoncareers" class="exit-link"
+            target="_blank"
+            rel="https://boards.greenhouse.io/pokemoncareers"
+            title="External: https://boards.greenhouse.io/pokemoncareers">
+            Careers
+          </a>
+        </li>
+
+    <li>
+      <a href="/us/country-region/" rel="" title="">
+        Select a Country/Region
+        <i class="icon-us"></i>
+      </a>
+    </li>
+
+    <li>
+      <a id="press-link" href="https://press.pokemon.com/en" class="exit-link"
+        target="_blank"
+        rel="https://press.pokemon.com/en"
+        title="External: https://press.pokemon.com/en">
+        Press Site
+      </a>
+    </li>
+
+  </ul>
+</div>
+
+<div class="global-footer-social match">
+
+    <div class="footer-social-wrapper">
+        <div class="find-us">
+            <div class="find-us-box">
+
+                <a href="https://www.facebook.com/pokemon" class="facebook exit-link" target="_blank"
+                   title="External: https://www.facebook.com/pokemon">
+                    <span class="offscreen">Facebook</span>
+                </a>
+
+                <a href="https://www.youtube.com/user/Pokemon" class="youtube exit-link" target="_blank"
+                   title="External: https://www.youtube.com/user/Pokemon">
+                    <span class="offscreen">Youtube</span>
+                </a>
+
+                <a href="https://www.twitter.com/pokemon" class="twitter exit-link" target="_blank"
+                   title="External: https://www.twitter.com/pokemon">
+                    <span class="offscreen">Twitter</span>
+                </a>
+
+                    <a href="https://www.instagram.com/pokemon" class="instagram exit-link" target="_blank"
+                       title="External: https://www.instagram.com/pokemon">
+                        <span class="offscreen">Instagram</span>
+                    </a>
+
+                    <a href="https://www.pinterest.com/pokemon" class="pinterest exit-link" target="_blank"
+                       title="External: https://www.pinterest.com/pokemon">
+                        <span class="offscreen">Pinterest</span>
+                    </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="global-footer-legal match">
+
+  <div class="footer-legal-wrapper">
+
+    <div id="footer--privacy">
+        <a
+            title="External: https://caru.bbbprograms.org/seal/Confirmation/1596150491"
+                class="exit-link" target="_blank"
+                href="https://caru.bbbprograms.org/seal/Confirmation/1596150491"
+            >
+        </a>
+
+      <ul>
+
+          <li>
+            <a href="/us/terms-of-use/">Terms of Use</a>
+          </li>
+
+          <li>
+            <a href="/us/privacy-notice/">Privacy Notice</a>
+          </li>
+
+          <li>
+            <a id="cookieLink" href="/us/cookie-page/">Cookie Page</a>
+          </li>
+
+          <li>
+            <a href="/us/legal/">Legal Info</a>
+          </li>
+
+            <li>
+              <a id="securityLink" href="/us/vulnerability-disclosure-program/">Security</a>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <span>©2023 Pokémon. ©1995 - 2023 Nintendo/Creatures Inc./GAME FREAK inc. TM, ®Nintendo.</span>
+
+  </div>
+
+</div>
+
+    </div>
+  </footer>
+
+
+  
+
+
+<div id="modal" class="popup">
+	<div class="externalLink">
+    <h6>
+
+      You are about to leave a site operated by The Pokémon Company International, Inc.
+
+    </h6>
+		<p>
+
+The Pokémon Company International is not responsible for the content of any linked website that is not operated by The Pokémon Company International. Please note that these websites' privacy policies and security practices may differ from The Pokémon Company International's standards.
+
+    </p>
+		<div class="buttons-wrapper">
+			<a href="#" class="button button-green arrow-right continueBtn">
+
+        Continue
+
+      </a>
+			<a href="#" class="button button-darkgray arrow-left closeBtn">
+
+        Cancel
+
+      </a>
+		</div>
+	</div>
+</div>
+
+<div id="pokemon-center-modal" class="popup">
+	<div class="externalLink centerLink">
+    <h6>
+      Click Continue to visit PokemonCenter.com, our official online shop.
+    </h6>
+    <h6>
+      The privacy and security policies differ.
+    </h6>
+		<div class="buttons-wrapper">
+			<a href="#" class="button button-green arrow-right continueBtn">
+
+        Continue
+
+      </a>
+			<a href="#" class="button button-darkgray arrow-left closeBtn" target="_blank">
+
+        Cancel
+
+      </a>
+		</div>
+	</div>
+</div>
+
+<div id="site-search-modal" class="popup">
+
+	<form id="site-search-widget" class="form-analytics" name="site-search-modal">
+		<span class="search"><input type="search" placeholder="Search" name="search" id="site-search-widget-term" autocomplete="off" /></span>
+		<span class="submit icon icon_search"><input type="submit" value="" id="site-search-widget-submit"/></span>
+        <div id="modal-search-results"></div>
+	</form>
+</div>
+
+<div id='report-screen-name-success-modal' class='popup'>
+  <h6>Report Inappropriate Screen Name</h6>
+
+  <div class='modalBox'>
+    <img src="https://assets.pokemon.com/static2/_ui/img/chrome/external_link_bumper.png" alt="" class="hidden-mobile" />
+
+    <p>
+    Pokemon.com administrators have been notified and will review the screen name for compliance with the Terms of Use.
+    </p>
+
+    <div class='buttons-wrapper'>
+      <a href='#' class='button button-orange closeBtn'>
+        Close
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id='report-screen-name-failure-modal' class='popup'>
+  <h6>Report Inappropriate Screen Name</h6>
+
+  <div class='modalBox'>
+    <img src="https://assets.pokemon.com/static2/_ui/img/chrome/external_link_bumper.png" alt="" class="hidden-mobile" />
+
+    <p>
+    Your request could not be completed. Please try again. If the problem persists, please contact Customer Support.
+    </p>
+
+    <div class='buttons-wrapper'>
+      <a href='#' class='button button-orange closeBtn'>
+        Close
+      </a>
+    </div>
+  </div>
+</div>
+
+    <div id="email-signup-success" class="email-modal-content popup" tabindex="0">
+        <div class="email-modal-close-icon-container">
+            <a tabindex="0" class="icon icon_multiply email-modal-close-icon closeBtn"></a>
+        </div>
+        <div class="email-modal-body modalBox">
+            <span class="icon icon_check email-modal-big-icon" style="color: green;"></span>
+            <p class="email-modal-emphasis-text">You have successfully signed up for Pokémon&nbsp;emails!</p>
+            <p>We'll send you a few emails every week.</p>
+            <p>Unsubscribe at any time using the link in your email's&nbsp;footer.</p>
+        </div>
+    </div>
+
+    <div id="email-signup-failure" class="email-modal-content popup" tabindex="0">
+        <div class="email-modal-close-icon-container">
+            <a tabindex="0" class="icon icon_multiply email-modal-close-icon closeBtn"></a>
+        </div>
+        <div class="email-modal-body modalBox">
+            <p class="email-modal-emphasis-text">We're sorry, but we can't process your request.</p>
+            <p>We can't sign you up for emails right&nbsp;now.</p>
+            <p>You can visit <a href="https://www.pokemon.com/us/">pokemon.com</a> for the latest Pokémon news or contact Customer&nbsp;Support&nbsp;<a href="https://support.pokemon.com/hc/en-us/articles/20573695697428">here</a>.</p>
+        </div>
+    </div>
+<div id='popupScreen' class="popupScreen"></div>
+
+
+  
+    
+<div id="video-modal" class="popup">
+<span class="watch-token-info"><span class="token_icon"></span><p class="token_verbal">You've been awarded <span class="token_amount">0</span> Token(s) for watching Pokémon TV!</p></span>
+    <div class="video-modal-wrapper">
+
+        <header class="video-header">
+            <h4 id="episodeInfo">
+
+            </h4>
+            <!-- HEADLINE -->
+            <h1 id="episodeTitle"></h1>
+        </header>
+
+        <div class="video-container">
+        </div>
+
+        <p class="legal" style="padding-top: 10px"></p>
+
+        <p class="video-summary">
+
+        </p>
+
+        
+
+        <a href="#" class="closeBtn button button-orange no-arrow right"><i class="icon icon_multiply"></i> Close</a>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    // define waitSeconds above require script tag
+    // to override the default, until main.js loads
+    window.requirejs = {
+        waitSeconds: 30 // when loaded, main.js also sets waitSeconds to 30
+    };
+</script>
+<script data-main="https://assets.pokemon.com/static2/_ui/js/template-d.js"
+        src="https://assets.pokemon.com/static2/_ui/js/vendor/require.js"></script>
+
+<script type="text/javascript">
+if (typeof _satellite !== "undefined") {
+  _satellite.pageBottom();
+}
+</script>
+
+    <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Gardevoir&nbsp;ex Strategy: New Paths to Victory for a Classic Pok\u00e9mon",
+    "description": "The Embrace Pok\u00e9mon\u2019s supporting cards may have changed post-rotation, but it\u2019s still powerful in the new Standard format.",
+    "image": [
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/trading-card-game/_tiles/sv/sv05/deck-strategy/gardevoir-ex/sv05-gardevoir-ex-169-en.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_228.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_89.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV02/SV02_EN_97.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_191.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_96.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV05/SV05_EN_146.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV04/SV04_EN_177.png",
+        "https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SV03/SV03_EN_192.png"
+    ],
+    "articleBody": "<p style=\"color: #717171; font-weight: bold; font-size: 110%; line-height: normal; margin: 0 0 2.6em 1em;\">By <a href=\"#stephane-ivanoff\">St&eacute;phane Ivanoff</a>, Contributing Writer</p>\n<p><span style=\"float: left; font-size: 550%; font-weight: bold; line-height: 80%; color: #30a7d7; margin: 0 5px -5px 0;\">G</span>[[ardevoir ex:series:sv01:228]] from the Pok&eacute;mon TCG: <a href=\"https://tcg.pokemon.com/en-us/expansions/scarlet-violet/\"><em>Scarlet &amp; Violet</em></a> expansion has redefined what Stage 2 decks are capable of. In the year or so that it&rsquo;s been tournament legal, this card has seen success&mdash;including a Runner-Up finish at the 2023 World Championships. Two powerful Abilities lay at the heart of this success: Gardevoir ex&rsquo;s Psychic Embrace Ability, which allows it to attach Basic Psychic Energy to Psychic Pok&eacute;mon, and [[Kirlia:series:swsh12:68]]&rsquo;s Refinement Ability, which dials up the draw power of Gardevoir ex&rsquo;s pre-Evolution.</p>\n<p>Gardevoir ex is not a new card, but the recent Standard rotation has significantly changed the way the deck can be played. <a href=\"/us/strategy/gardevoir-ex-pokemon-tcg-deck-strategy\">When Robin Schulz wrote about the previous version</a> of the deck, attackers with damage that scaled based on the amount of Energy attached to them provided its might: [[Gardevoir:series:swsh6:61]] and [[Zacian V:series:cel25:16]]. Both Pok&eacute;mon could do enough damage to KO any Pok&eacute;mon in the format&mdash;provided you could attach enough Energy to them (cards like [[Reversal Energy:series:sv02:192]] and [[Moonlit Hill:series:sv4pt5:81]] could also help with that). But now that they&rsquo;ve both rotated out of Standard, the deck simply can&rsquo;t function in the same way.</p>\n<a href=\"/us/pokemon-tcg/pokemon-cards/series/sv01/228/\"><img style=\"float: right; max-width: 200px; margin: 0 0 16px 16px;\" src=\"/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_228.png\" alt=\"\" /></a>\n<div style=\"overflow: hidden; min-width: 50%; line-height: 0;\"><br /></div>\n<p style=\"margin-top: 0;\">For a while, it seemed that Gardevoir ex&rsquo;s time was over and that it wouldn&rsquo;t be able to contend with decks like the almighty [[Charizard ex:series:sv03:125]]. However, it is too early to give up on the Embrace Pok&eacute;mon. Several players have made the deck work even after rotation: Fabien Pujol came in ninth place at the Europe International Championships with it, and more recently, Joshua Frink made Top 4 at the massive Orlando Regional Championships with a similar deck list. And I&rsquo;m a longtime Gardevoir ex player myself. Now, let&rsquo;s take a look at how to construct and play this new version of this popular deck.</p>\n<br />\n<h1 style=\"font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;\">Rotation Effects on Gardevoir ex</h1>\n<p>First things first, to understand how Gardevoir ex has changed, let&rsquo;s talk about the cards that the deck lost to rotation. I&rsquo;ve already mentioned the two big hitters Gardevoir and Zacian V, but the deck is also missing some important consistency cards: [[Level Ball:series:swsh5:129]], [[Fog Crystal:series:swsh6:140]], and [[Battle VIP Pass:series:swsh8:225]], although the latter can be replaced&mdash;arguably advantageously&mdash;by the new [[Buddy-Buddy Poffin:series:sv05:144]]. Losing these cards, especially Level Ball, makes it harder for Gardevoir to get Kirlia into play. Note that the Kirlia from <em>Sword &amp; Shield&mdash;Chilling Reign</em> (which was usually used as a one-off to get the other Kirlia into play) also rotated, making this task even harder.</p>\n<p>The best way to get multiple Kirlia in play early on now is Technical Machine: [[Evolution:series:sv04:178]], which can be used on the first or second turn of the game to evolve two [[Ralts:series:swsh10:60]] into Kirlia. It is a poor replacement for the previous engine, but when adapting a deck to a new format, it&rsquo;s important to not compare it to its previous version&mdash;it should be compared to the other decks in the new format instead. After all, Gardevoir ex is not the only deck to lose cards to rotation.</p>\n<a href=\"/us/pokemon-tcg/pokemon-cards/series/sv01/89/\"><img style=\"float: right; max-width: 200px; margin: 0 0 16px 16px;\" src=\"/static-assets/content-assets/cms2/img/cards/web/SV01/SV01_EN_89.png\" alt=\"\" /></a>\n<div style=\"overflow: hidden; min-width: 50%; line-height: 0;\"><br /></div>\n<p style=\"margin-top: 0;\">The question of which attackers to use remains. Of course, Gardevoir ex itself can attack with Miracle Force, but we need a Pok&eacute;mon that can do more damage than that, or we&rsquo;ll stand no chance against decks with high-HP Pok&eacute;mon, such as Charizard ex. The answer? The modest-looking [[Drifloon:series:sv01:89]]! Don&rsquo;t underestimate it, because its Balloon Blast attack does damage depending on the amount of damage counters on it. Since Psychic Embrace puts damage counters on the Pok&eacute;mon that received the Energy attachment, it&rsquo;s easy to put counters on Drifloon so that it can do high damage. With six, Drifloon hits for 180 damage&hellip;but if you attach a Bravery Charm to Drifloon, you can use Psychic Embrace up to five times on it for a maximum of 10 damage counters or 300 damage. And with a [[Luxurious Cape:series:sv04:166]] or the new [[Hero&rsquo;s Cape:series:sv05:152]], it can do up to 480&mdash;enough to KO anything in the format!</p>\n<p>And the best part is that since Drifloon has only base 70 HP, we can use Buddy-Buddy Poffin to retrieve it from the deck. Note that the HP-boosting Tool cards can also be used on another attacker, [[Scream Tail:series:sv04:86]]. This Pok&eacute;mon&rsquo;s damage doesn&rsquo;t scale as powerfully as Drifloon&rsquo;s, but it can target the Bench, enabling it to KO powerful support Pok&eacute;mon, such as [[Baxcalibur:series:sv02:60]] or [[Archeops:series:swsh12:147]].</p>\n<p>The glue that holds this deck together is [[Arven:series:sv01:166]]. This Supporter card saw very little play with Gardevoir ex before rotation, but because this new version relies on Tool cards to get Kirlia into play and to achieve high amounts of damage, Arven is a much better card now. In the first few turns of the game, it can be played for a Buddy-Buddy Poffin and a Technical Machine: Evolution in order to set up a powerful board. Later in the game, it can find Hero&rsquo;s Cape and key Items like [[Super Rod:series:sv02:188]] or [[Counter Catcher:series:sv04:160]].</p>\n<br />\n<h1 style=\"font-family: Flexo-Medium, sans-serif; font-size: 150%; padding-bottom: 3px; border-bottom: 3px solid #30A7D7; margin: 16px 0 18px 0;\">Gardevoir ex Deck List</h1>\n<p>Now that we understand what the deck lost to rotation and how to replace these cards while still achieving the same basic goals, here&rsquo;s a deck list to get you started. It might look familiar: it&rsquo;s a slightly simplified version of the deck that I played at the recent Europe International Championships.</p>\n<br />",
+    "datePublished": "2024-05-03T00:00:00"
+}
+    </script>
+
+
+    <a href="Untitled-4.html">DALJE</a>
+
+
+	</body>
+</html>
